@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  zookeeper:
+    container_name: "zookeeper"
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+    restart: unless-stopped
+
+  kafka:
+    container_name: "kafka"
+    image: wurstmeister/kafka:0.11.0.1
+    ports:
+      - "9092:9092"
+    links: [zookeeper]
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    restart: unless-stopped
+
+  sdp-admin-be:
+    container_name: "sdp-admin-be"
+    build: ./sdp-admin-be/src/main/docker
+    image: sdp-admin-be
+    links: [kafka, zookeeper]
+    ports:
+      - "8090:8080"
+      - "5005:5005"
+    restart: unless-stopped
+
+  sdp-admin-fe:
+    container_name: "sdp-admin-fe"
+    build: ./sdp-admin-fe
+    image: sdp-admin-fe
+    links: [sdp-admin-be]
+    ports:
+      - "80:80"
+    restart: unless-stopped
