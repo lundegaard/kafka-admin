@@ -1,2 +1,1 @@
-# kafka-administration
-Administration application over Kafka
+Administration FE application over Kafka
