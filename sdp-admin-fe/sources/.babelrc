@@ -1,0 +1,4 @@
+{
+  "presets": ["babel-preset-react-union"],
+  "plugins": ["react-hot-loader/babel"]
+}

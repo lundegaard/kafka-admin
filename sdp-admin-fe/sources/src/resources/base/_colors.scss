@@ -1,0 +1,38 @@
+/* Color variables settings */
+
+$colors: (
+  default       : #4a4a4a,
+  gray-blue     : #e9edf6,
+  gray-yellow   : #dfded2,
+  gray-green    : #ced3c4,
+  light-blue    : #d2deea,
+  regular-blue  : #b6e1fa,
+  dark-blue     : #155791,
+  fade-blue     : #d4e1f5,
+  fade-green    : #bde0d0,
+  light-green   : #bee42f,
+  dark-green    : #00cc00,
+  dark-red      : #df1f44,
+  dark-gray     : #4a4a4a,
+  regular-gray  : #d1d1d1,
+  light-gray    : #cbcbcb,
+  snow-gray     : #ededed,
+  fade-gray     : #e4ebea,
+  sand-yellow   : #ffeb99,
+  light-pink    : #fbd9e3,
+  dark-pink     : #efbdd6,
+  light-brown   : #deccbe,
+  light-orange  : #faede4,
+  dark-orange   : #ef7d00,
+  violet        : #e4caff,
+  white         : #ffffff,
+  black         : #000000,
+);
+
+
+/**
+ * Color getter function
+ */
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}

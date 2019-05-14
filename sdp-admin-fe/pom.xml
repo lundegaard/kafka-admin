@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>eu.lundegaard.sdp</groupId>
+        <artifactId>kafka-admin</artifactId>
+        <version>0.50.3-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>sdp-admin-fe</artifactId>
+    <name>Kafka Admin FE (${project.packaging})</name>
+    <packaging>pom</packaging>
+
+    <properties>
+        <root.project.dir>${project.basedir}/..</root.project.dir>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+                    <verbose>true</verbose>
+                    <images>
+                        <image>
+                            <name>%a:%l</name>
+                            <build>
+                                <dockerFileDir>${project.basedir}</dockerFileDir>
+                                <args>
+                                    <VERSION>${project.version}</VERSION>
+                                </args>
+                                <tags>
+                                    <tag>latest</tag>
+                                </tags>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>docker-build</id>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>docker-push</id>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

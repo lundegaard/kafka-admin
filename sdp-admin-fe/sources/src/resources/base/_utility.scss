@@ -1,0 +1,194 @@
+/* Custom utility classes */
+
+// TEXT CLASSES
+.text {
+
+    // Font weights
+    &--thin {
+        font-weight: 400;
+    }
+    &--regular {
+        font-weight: 500;
+    }
+    &--semi-bold {
+        font-weight: 600;
+    }
+    &--bold {
+        font-weight: 700;
+    }
+
+    // Font sizes
+    &--size-xs {
+        font-size: .75em;
+    }
+    &--size-s {
+        font-size: .875em;
+    }
+    &--size-m {
+        font-size: 1em;
+    }
+    &--size-l {
+        font-size: 1.125em;
+    }
+    &--size-xl {
+        font-size: 1.25em;
+    }
+    &--size-2xl {
+        font-size: 1.5em;
+    }
+    &--size-3xl {
+        font-size: 1.75em;
+    }
+    &--size-4xl {
+        font-size: 2em;
+    }
+    &--size-5xl {
+        font-size: 3em;
+    }
+
+    // style
+    &--oblique {
+        font-style: oblique;
+    }
+    &--italic {
+        font-style: italic;
+    }
+
+    // decoration
+    &--underline {
+        text-decoration: underline;
+    }
+
+    // Alignment
+    &--left {
+        text-align: left;
+    }
+    &--right {
+        text-align: right;
+    }
+    &--center {
+        text-align: center;
+    }
+    &--justify {
+        text-align: justify;
+    }
+    &--nowrap {
+        white-space: nowrap;
+    }
+
+    // Transformation
+    &--lowercase {
+        text-transform: lowercase;
+    }
+    &--uppercase {
+        text-transform: uppercase;
+    }
+}
+
+.display {
+    &--inline-block {
+        display: inline-block;
+    }
+    &--inline {
+        display: inline;
+    }
+    &--block {
+        display: block;
+    }
+    &--flex {
+        display: flex;
+    }
+}
+
+.position {
+    &--relative {
+        position: relative;
+    }
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.base-line {
+    display: flex;
+    align-items: baseline;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+
+// COLOR VARIANTS
+@each $name, $value in $colors {
+    .background--#{$name} {
+        background-color: $value !important;
+    }
+    .color--#{$name} {
+        color: $value !important;
+    }
+}
+
+// PADDINGS AND MARGINS
+@for $i from 0 through 8 {
+    $int: 8 * $i;
+
+    // margins
+    .m--#{$int} {
+        margin: $int + px;
+    }
+    .mt--#{$int} {
+        margin-top: $int + px;
+    }
+    .mb--#{$int} {
+        margin-bottom: $int + px;
+    }
+    .ml--#{$int} {
+        margin-left: $int + px;
+    }
+    .mr--#{$int} {
+        margin-right: $int + px;
+    }
+
+    // paddings
+    .p--#{$int} {
+        padding: $int + px;
+    }
+    .pt--#{$int} {
+        padding-top: $int + px;
+    }
+    .pb--#{$int} {
+        padding-bottom: $int + px;
+    }
+    .pl--#{$int} {
+        padding-left: $int + px;
+    }
+    .pr--#{$int} {
+        padding-right: $int + px;
+    }
+}
+
+// WIDTH AND HEIGHT
+@for $i from 0 through 8 {
+    $int: 50 * $i;
+
+    .w--#{$int} {
+        width: $int + px;
+    }
+    .h--#{$int} {
+        height: $int + px;
+    }
+}
+
+@for $i from 0 through 10 {
+    $int: 10 * $i;
+
+    .w--#{$int}p {
+        width: #{$int + '%'};
+    }
+    .h--#{$int}p {
+        height: #{$int + '%'};
+    }
+}
